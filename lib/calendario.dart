@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'GoogleCalendarService.dart';
 
 class Calendario extends StatefulWidget {
   const Calendario({Key? key});
@@ -8,79 +11,20 @@ class Calendario extends StatefulWidget {
 }
 
 class _CalendarioState extends State<Calendario> {
-  final List<Map<String, dynamic>> habits = [
-    {'name': 'Meditar', 'days': 3},
-    {'name': 'Caminhar', 'days': 5},
-  ];
-
-  void _incrementHabitDays(int index) {
-    setState(() {
-      habits[index]['days']++;
-    });
-  }
-
-  void _addHabit(String habitName) {
-    setState(() {
-      habits.add({'name': habitName, 'days': 0});
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    final TextEditingController habitController = TextEditingController();
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Calendario',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Color(0xFF2B4568),
+        title: Text('Calendário'),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: habits.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(habits[index]['name']),
-                  subtitle: Text('${habits[index]['days']} dias'),
-                  trailing: IconButton(
-                    icon: Icon(Icons.add),
-                    onPressed: () {
-                      _incrementHabitDays(index);
-                    },
-                  ),
-                );
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: habitController,
-                    decoration: InputDecoration(
-                      labelText: 'Novo Hábito',
-                    ),
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () {
-                    if (habitController.text.isNotEmpty) {
-                      _addHabit(habitController.text);
-                      habitController.clear();
-                    }
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Adicione um evento ao Google Agenda
+            GoogleCalendarService.addEvent('Tarefa', DateTime.now(), DateTime.now().add(Duration(hours: 1)));
+          },
+          child: Text('Adicionar evento ao Google Agenda'),
+        ),
       ),
     );
   }
