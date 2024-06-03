@@ -31,7 +31,11 @@ class _CalendarioState extends State<Calendario> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hábitos'),
+        title: Text(
+          'Calendario',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Color(0xFF2B4568),
       ),
       body: Column(
         children: [

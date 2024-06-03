@@ -31,13 +31,13 @@ class _HomeState extends State<Home> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Editar Tarefa'),
+          title: const Text('Editar Tarefa'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 controller: dateController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'dd/mm',
                 ),
                 onChanged: (value) {

@@ -31,7 +31,11 @@ class _HabitosState extends State<Habitos> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hábitos'),
+        title: Text(
+          'Habitos',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Color(0xFF2B4568),
       ),
       body: Column(
         children: [
