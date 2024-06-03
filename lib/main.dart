@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'home.dart';
 
 void main() {
-  runApp(TaskManagerApp());
+  runApp(MyApp());
 }
 
-class TaskManagerApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Task Manager',
+      title: 'Home',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(),
+        '/': (context) => Home(),
       },
     );
   }

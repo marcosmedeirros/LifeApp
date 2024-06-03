@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HabitsPage extends StatefulWidget {
+class Calendario extends StatefulWidget {
+  const Calendario({Key? key});
+
   @override
-  _HabitsPageState createState() => _HabitsPageState();
+  State<Calendario> createState() => _CalendarioState();
 }
 
-class _HabitsPageState extends State<HabitsPage> {
+class _CalendarioState extends State<Calendario> {
   final List<Map<String, dynamic>> habits = [
     {'name': 'Meditar', 'days': 3},
     {'name': 'Caminhar', 'days': 5},

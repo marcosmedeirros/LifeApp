@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'tasks_page.dart';
-import 'completed_tasks_page.dart';
-import 'calendar_page.dart';
-import 'habits_page.dart';
+import 'infos.dart';
+import 'calendario.dart';
+import 'habitos.dart';
 
-class HomePage extends StatefulWidget {
+class Home extends StatefulWidget {
+  const Home({Key? key});
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<Home> createState() => _HomeState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeState extends State<Home> {
   List<Map<String, dynamic>> tasks = []; // Lista de tarefas
 
   TextEditingController taskController = TextEditingController();
@@ -93,7 +94,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text(
+          'Home',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Color(0xFF2B4568),
       ),
       body: SingleChildScrollView(
@@ -219,28 +223,28 @@ class _HomePageState extends State<HomePage> {
               IconButton(
                 icon: Icon(Icons.assignment),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/tasks');
+                  navigateToPage(const Home());
                 },
                 color: Colors.white,
               ),
               IconButton(
                 icon: Icon(Icons.check),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/completed_tasks');
+                  navigateToPage(const Infos());
                 },
                 color: Colors.white,
               ),
               IconButton(
                 icon: Icon(Icons.calendar_today),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/calendar');
+                  navigateToPage(const Calendario());
                 },
                 color: Colors.white,
               ),
               IconButton(
                 icon: Icon(Icons.star),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/habits');
+                  navigateToPage(Habitos());
                 },
                 color: Colors.white,
               ),
